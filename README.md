@@ -1,4 +1,4 @@
-Employee_Management
+##Employee_Management
 
 This is a Spring Boot API project that allows management of employees and their projects related to clients.
 
@@ -20,7 +20,7 @@ To run the project, follow these steps:
 
 The following API endpoints are available:
 
-For Many-To-One mapping
+##For Many-To-One mapping
 
 For clients:
 
@@ -30,7 +30,7 @@ For clients:
 - PUT /client/{id} - Update a client
 - DELETE /client/{id} - Delete a client
 
-Sample JSON data:
+##Sample JSON data:
 
 {
     "end_date": "2022-12-31",
@@ -65,7 +65,7 @@ For Projects:
 - PUT /projects/{id} - Update a project
 - DELETE /projects/{id} - Delete a project
  
-For Many-To-Many mapping
+##For Many-To-Many mapping
 
 For Employees:
 
@@ -75,7 +75,7 @@ For Employees:
 - PUT /employee/{id} - Update a employee
 - DELETE /employeee/{id} - Delete a employee
 
-Sample JSON data:
+##Sample JSON data:
 
 {
     "end_date": "2022-12-31",
