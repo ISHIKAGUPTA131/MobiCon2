@@ -1,7 +1,9 @@
 package com.mobiconnect.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -18,12 +20,15 @@ public class Employee
     private String email;
     private String contact;
     private String gender;
-    private String dob;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date dob;
     private String designation;
     private String address;
     private String work_location;
-    private String date_of_joining;
-    private String date_of_exit;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date date_of_joining;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date date_of_exit;
     private String manager;
     private String total_leaves;
     private String leave_balance;
@@ -32,15 +37,7 @@ public class Employee
     @JoinColumn(name = "employee_id",referencedColumnName = "id")
     private List<Leave> leave;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "Employee_project_TABLE",
-            joinColumns = {
-                    @JoinColumn(name = "employee_id",referencedColumnName = "id")
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "project_id",referencedColumnName = "id")
-            })
-
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "employee")
     private Set<Project> projects;
    
     public int getId() {
@@ -73,10 +70,10 @@ public class Employee
     public void setGender(String gender) {
         this.gender = gender;
     }
-    public String getDob() {
+    public Date getDob() {
         return dob;
     }
-    public void setDob(String dob) {
+    public void setDob(Date dob) {
         this.dob = dob;
     }
     public String getDesignation() {
@@ -97,16 +94,16 @@ public class Employee
     public void setWork_location(String work_location) {
         this.work_location = work_location;
     }
-    public String getDate_of_joining() {
+    public Date getDate_of_joining() {
         return date_of_joining;
     }
-    public void setDate_of_joining(String date_of_joining) {
+    public void setDate_of_joining(Date date_of_joining) {
         this.date_of_joining = date_of_joining;
     }
-    public String getDate_of_exit() {
+    public Date getDate_of_exit() {
         return date_of_exit;
     }
-    public void setDate_of_exit(String date_of_exit) {
+    public void setDate_of_exit(Date date_of_exit) {
         this.date_of_exit = date_of_exit;
     }
     public String getManager() {
@@ -127,9 +124,9 @@ public class Employee
     public void setLeave_balance(String leave_balance) {
         this.leave_balance = leave_balance;
     }
-    public Employee(int id, String name, String email, String contact, String gender, String dob,
-                    String designation, String address, String work_location, String date_of_joining, String date_of_exit,
-                    String manager, String total_leaves, String leave_balance, List<Leave> leaveTable) {
+    public Employee(int id, String name, String email, String contact, String gender, Date dob,
+                    String designation, String address, String work_location, Date date_of_joining, Date date_of_exit,
+                    String manager, String total_leaves, String leave_balance, List<Leave> leaveTable, Set<Project> projects) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -144,6 +141,7 @@ public class Employee
         this.manager = manager;
         this.total_leaves = total_leaves;
         this.leave_balance = leave_balance;
+        this.projects = projects;
         this.leave = leave;
     }
 

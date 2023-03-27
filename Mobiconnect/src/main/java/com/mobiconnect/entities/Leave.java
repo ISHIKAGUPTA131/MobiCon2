@@ -1,6 +1,9 @@
 package com.mobiconnect.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "leave_tbl")
@@ -11,14 +14,16 @@ public class Leave {
     @Column(name = "id")
     private int id;
     private String type;
-    private String start_date;
-    private String end_date;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date start_date;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date end_date;
     private int day;
     private String approver;
     private String status;
 
 
-    public Leave(int id, String startDate, String endDate, int day, String approver, String status) {
+    public Leave(int id, Date startDate, Date endDate, int day, String approver, String status) {
         this.id = id;
         this.start_date = startDate;
         this.end_date = endDate;
@@ -43,19 +48,19 @@ public class Leave {
         this.type = type;
     }
 
-    public String getStart_date() {
+    public Date getStart_date() {
         return start_date;
     }
 
-    public void setStart_date(String start_date) {
+    public void setStart_date(Date start_date) {
         this.start_date = start_date;
     }
 
-    public String getEnd_date() {
+    public Date getEnd_date() {
         return end_date;
     }
 
-    public void setEnd_date(String end_date) {
+    public void setEnd_date(Date end_date) {
         this.end_date = end_date;
     }
 

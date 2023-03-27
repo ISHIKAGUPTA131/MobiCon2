@@ -1,6 +1,7 @@
 package com.mobiconnect.controllers;
 
 
+import com.mobiconnect.entities.Leave;
 import com.mobiconnect.entities.TimeSheetDay;
 import com.mobiconnect.services.TimeSheetDayService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,16 @@ import java.util.Optional;
 public class TimeSheetDayController {
     @Autowired
     private TimeSheetDayService timeSheetDayService;
+
+    // search TimeSheet by week
+    @GetMapping("/days/search")
+    public ResponseEntity<List<TimeSheetDay>> searchTimeSheetByWeek(@RequestParam Integer week) {
+        List<TimeSheetDay> timeSheetDays = timeSheetDayService.searchTimeSheetByWeek(week);
+        if (timeSheetDays.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(timeSheetDays);
+    }
 
 
     //get all timeSheetDays

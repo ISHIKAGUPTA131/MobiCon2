@@ -1,5 +1,6 @@
 package com.mobiconnect.controllers;
 
+import com.mobiconnect.entities.Client;
 import com.mobiconnect.entities.Leave;
 import com.mobiconnect.services.LeaveService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,16 @@ import java.util.Optional;
 public class LeaveController {
     @Autowired
     private LeaveService leaveService;
+
+    // search Leaves by type
+    @GetMapping("/leaves/search")
+    public ResponseEntity<List<Leave>> searchLeavesByType(@RequestParam String type) {
+        List<Leave> leaves = leaveService.searchLeavesByType(type);
+        if (leaves.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(leaves);
+    }
 
 
     //get all Leaves

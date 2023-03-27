@@ -1,7 +1,9 @@
 package com.mobiconnect.entities;
 
+import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,8 +16,10 @@ public class Client
 	private int id;
 	private String name;
 	private String location;
-	private String start_date;
-	private String end_date;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	private Date start_date;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	private Date end_date;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "client_id",referencedColumnName = "id")
@@ -40,16 +44,16 @@ public class Client
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public String getStart_date() {
+	public Date getStart_date() {
 		return start_date;
 	}
-	public void setStart_date(String start_date) {
+	public void setStart_date(Date start_date) {
 		this.start_date = start_date;
 	}
-	public String getEnd_date() {
+	public Date getEnd_date() {
 		return end_date;
 	}
-	public void setEnd_date(String end_date) {
+	public void setEnd_date(Date end_date) {
 		this.end_date = end_date;
 	}
 	public List<Project> getProjectTable() {
@@ -58,7 +62,7 @@ public class Client
 	public void setProjectTable(List<Project> projectTable) {
 		this.projectTable = projectTable;
 	}
-	public Client(int id, String name, String location, String start_date, String end_date,
+	public Client(int id, String name, String location, Date start_date, Date end_date,
 				  List<Project> projectTable) {
 		this.id = id;
 		this.name = name;

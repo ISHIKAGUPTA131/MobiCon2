@@ -14,6 +14,11 @@ public class ClientService {
     @Autowired
     private ClientRepository clientTableRepository;
 
+    // search clients by name
+    public List<Client> searchClientsByName(String name) {
+        return clientTableRepository.findByNameContaining(name);
+    }
+
 
     //get all clients
     public List<Client> getAllClient()

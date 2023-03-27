@@ -1,5 +1,6 @@
 package com.mobiconnect.services;
 
+import com.mobiconnect.entities.Client;
 import com.mobiconnect.entities.Leave;
 import com.mobiconnect.entities.Project;
 import com.mobiconnect.repositories.LeaveRepository;
@@ -14,6 +15,11 @@ import java.util.List;
 public class LeaveService {
     @Autowired
     private LeaveRepository leaveRepository;
+
+    // search clients by name
+    public List<Leave> searchLeavesByType(String type) {
+        return leaveRepository.findByTypeContaining(type);
+    }
 
     //get all leaves
     public List<Leave> getAllLeaves()

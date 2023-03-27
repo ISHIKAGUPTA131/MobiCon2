@@ -2,6 +2,7 @@ package com.mobiconnect.services;
 
 import java.util.List;
 
+import com.mobiconnect.entities.Client;
 import com.mobiconnect.entities.TimeSheetDay;
 import com.mobiconnect.repositories.TimeSheetDayRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,11 @@ import org.springframework.stereotype.Component;
 public class TimeSheetDayService {
     @Autowired
     private TimeSheetDayRepository timeSheetDayRepository;
+
+    // search clients by name
+    public List<TimeSheetDay> searchTimeSheetByWeek(Integer week) {
+        return timeSheetDayRepository.findByWeekContaining(week);
+    }
 
     //get all TimeSheetDays
     public List<TimeSheetDay> getAllTimeSheetDays()

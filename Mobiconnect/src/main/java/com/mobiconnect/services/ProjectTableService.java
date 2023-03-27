@@ -2,6 +2,7 @@ package com.mobiconnect.services;
 
 import java.util.List;
 
+import com.mobiconnect.entities.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,11 @@ import com.mobiconnect.repositories.ProjectRepository;
 public class ProjectTableService {
     @Autowired
     private ProjectRepository projectTableRepository;
+
+    // search clients by name
+    public List<Project> searchProjectsByName(String name) {
+        return projectTableRepository.findByNameContaining(name);
+    }
 
      //get all projects
      public List<Project> getAllProjects()

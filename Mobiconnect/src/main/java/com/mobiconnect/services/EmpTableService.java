@@ -2,6 +2,7 @@ package com.mobiconnect.services;
 
 import java.util.List;
 
+import com.mobiconnect.entities.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,11 @@ import com.mobiconnect.repositories.EmployeeRepository;
 public class EmpTableService {
     @Autowired
     private EmployeeRepository empTableRepository;
+
+    // search employees by name
+    public List<Employee> searchEmployeesByName(String name) {
+        return empTableRepository.findByNameContaining(name);
+    }
 
      //get all employees
      public List<Employee> getAllEmp()
