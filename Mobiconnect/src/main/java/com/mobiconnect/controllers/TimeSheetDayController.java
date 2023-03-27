@@ -19,14 +19,13 @@ public class TimeSheetDayController {
 
     // search TimeSheet by week
     @GetMapping("/days/search")
-    public ResponseEntity<List<TimeSheetDay>> searchTimeSheetByWeek(@RequestParam Integer week) {
-        List<TimeSheetDay> timeSheetDays = timeSheetDayService.searchTimeSheetByWeek(week);
-        if (timeSheetDays.isEmpty()) {
+    public ResponseEntity<List<TimeSheetDay>> searchTimeSheetByWeek(@RequestParam int week) {
+        List<TimeSheetDay> list = timeSheetDayService.getTimeSheetDaysByWeek(week);
+        if(list.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        return ResponseEntity.ok(timeSheetDays);
+        return ResponseEntity.ok(list);
     }
-
 
     //get all timeSheetDays
     @GetMapping("/days")

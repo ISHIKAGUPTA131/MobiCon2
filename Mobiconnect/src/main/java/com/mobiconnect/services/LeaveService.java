@@ -16,7 +16,7 @@ public class LeaveService {
     @Autowired
     private LeaveRepository leaveRepository;
 
-    // search clients by name
+    // search Leaves by type
     public List<Leave> searchLeavesByType(String type) {
         return leaveRepository.findByTypeContaining(type);
     }

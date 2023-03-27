@@ -11,5 +11,5 @@ public interface TimeSheetDayRepository extends CrudRepository<TimeSheetDay, Int
     public TimeSheetDay findById(int id);
     public void save(int timeSheetDayId);
 
-    public List<TimeSheetDay> findByWeekContaining(Integer week);
+    public List<TimeSheetDay> findByWeek(int week);
 }

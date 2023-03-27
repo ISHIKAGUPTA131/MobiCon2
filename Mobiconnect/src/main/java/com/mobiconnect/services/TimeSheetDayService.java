@@ -14,9 +14,9 @@ public class TimeSheetDayService {
     @Autowired
     private TimeSheetDayRepository timeSheetDayRepository;
 
-    // search clients by name
-    public List<TimeSheetDay> searchTimeSheetByWeek(Integer week) {
-        return timeSheetDayRepository.findByWeekContaining(week);
+    // search TimeSheet by week
+    public List<TimeSheetDay> getTimeSheetDaysByWeek(int week) {
+        return timeSheetDayRepository.findByWeek(week);
     }
 
     //get all TimeSheetDays

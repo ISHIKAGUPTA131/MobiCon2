@@ -14,7 +14,7 @@ public class ProjectTableService {
     @Autowired
     private ProjectRepository projectTableRepository;
 
-    // search clients by name
+    // search projects by name
     public List<Project> searchProjectsByName(String name) {
         return projectTableRepository.findByNameContaining(name);
     }
