@@ -22,6 +22,10 @@ public class Project
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Employee> employee;
 
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "project_id",referencedColumnName = "id")
+	private List<TimeSheetDay> timeSheetDay;
+
 	public int getId() {
 		return id;
 	}
@@ -87,7 +91,7 @@ public class Project
 	}
 
 	public Project(int id, String name, String owner_client, String owner_consultant, String start_date,
-				   String end_date, String status, List<Employee> employee) {
+				   String end_date, String status, List<Employee> employee, List<TimeSheetDay> timesheetDay) {
 		this.id = id;
 		this.name = name;
 		this.owner_client = owner_client;
@@ -96,10 +100,18 @@ public class Project
 		this.end_date = end_date;
 		this.status = status;
 		this.employee = employee;
+		this.timeSheetDay = timesheetDay;
 	}
 
-  public Project()
-  {
+	public Project(){
 
-  }
+	}
+
+	public List<TimeSheetDay> getTimeSheetDay() {
+		return timeSheetDay;
+	}
+
+	public void setTimeSheetDay(List<TimeSheetDay> timeSheetDay) {
+		this.timeSheetDay = timeSheetDay;
+	}
 }

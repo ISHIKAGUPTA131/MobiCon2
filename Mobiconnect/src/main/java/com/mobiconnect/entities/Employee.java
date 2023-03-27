@@ -2,6 +2,7 @@ package com.mobiconnect.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -26,6 +27,10 @@ public class Employee
     private String manager;
     private String total_leaves;
     private String leave_balance;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "employee_id",referencedColumnName = "id")
+    private List<Leave> leave;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "Employee_project_TABLE",
@@ -124,7 +129,7 @@ public class Employee
     }
     public Employee(int id, String name, String email, String contact, String gender, String dob,
                     String designation, String address, String work_location, String date_of_joining, String date_of_exit,
-                    String manager, String total_leaves, String leave_balance) {
+                    String manager, String total_leaves, String leave_balance, List<Leave> leaveTable) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -139,13 +144,19 @@ public class Employee
         this.manager = manager;
         this.total_leaves = total_leaves;
         this.leave_balance = leave_balance;
+        this.leave = leave;
     }
 
-    // @ManyToMany(cascade = CascadeType.ALL)
-	// //@JoinColumn(name = "fk_client_id",referencedColumnName = "id")
-	// private List<ProjectTable>projectTable;
-    public Employee()
-    {
+    public Employee(){
 
+    }
+
+
+    public List<Leave> getLeave() {
+        return leave;
+    }
+
+    public void setLeaveTable(List<Leave> leaveTable) {
+        this.leave = leave;
     }
 }

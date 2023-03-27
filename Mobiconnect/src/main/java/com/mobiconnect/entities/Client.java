@@ -67,8 +67,9 @@ public class Client
 		this.end_date = end_date;
 		this.projectTable = projectTable;
 	}
-   public Client()
-   {
 
-   }
+	public Client(){
+
+	}
+
 }

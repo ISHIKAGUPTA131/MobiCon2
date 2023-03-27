@@ -39,7 +39,7 @@ public class ProjectTableService {
      //adding the projects
      public Project addProject(Project p)
      {
-         //list.add(b);
+
          Project result=projectTableRepository.save(p);
          return result;
      }
@@ -53,12 +53,9 @@ public class ProjectTableService {
     }
 
 
-    public void updateProject(Project projectTable, int projectId) {
-    }
-
 
     //update the project
-    public void updateBook(Project projectTable, int projectId)
+    public void updateProject(Project projectTable, int projectId)
     {
         projectTable.setId(projectId);
         projectTableRepository.save(projectTable);
