@@ -181,6 +181,27 @@ For Leave:
 - PUT /leaves/{id} - Update a leave data
 - DELETE /leaves/{id} - Delete a leave data
 
+For Seraching:
+
+TimeSheetDays:
+
+localhost:8080/days/search?week=1
+
+Leaves:
+
+localhost:8080/leaves/search?type=Sick
+
+Projects:
+
+localhost:8080/projects/search?name=Pro
+
+Employees:
+
+localhost:8080/employees/search?name=Ish
+
+Clients:
+
+localhost:8080/client/search?name=Push
 
 
 ## Dependencies
