@@ -68,6 +68,7 @@
     <orderEntry type="library" name="Maven: io.micrometer:micrometer-commons:1.10.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:6.0.6" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:6.0.6" level="project" />
+    <orderEntry type="library" name="Maven: javax.validation:validation-api:2.0.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web-services:3.0.4" level="project" />
     <orderEntry type="library" name="Maven: com.sun.xml.messaging.saaj:saaj-impl:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: jakarta.xml.soap:jakarta.xml.soap-api:3.0.0" level="project" />
@@ -109,5 +110,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:6.0.6" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.9.1" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.26" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.validation:jakarta.validation-api:2.0.2" level="project" />
   </component>
 </module>

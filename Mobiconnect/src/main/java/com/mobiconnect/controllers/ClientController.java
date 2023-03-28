@@ -6,6 +6,20 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import com.mobiconnect.entities.Client;
+import com.mobiconnect.services.ClientService;
+
+import javax.validation.Valid;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.mobiconnect.entities.Client;
@@ -38,7 +52,7 @@ public class ClientController {
         {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-       
+
         return ResponseEntity.of(Optional.of(list));
 
     }
@@ -63,16 +77,16 @@ public class ClientController {
     public ResponseEntity<Optional<Client>> addClient(@RequestBody Client clientTable)
     {
         Client c=null;
-       try{
+        try{
             c=this.clientTableService.addClient(clientTable);
             System.out.println(clientTable);
             return ResponseEntity.ok(Optional.of(c));
-       }
-       catch(Exception e)
-       {
+        }
+        catch(Exception e)
+        {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-       }
+        }
     }
 
 
@@ -80,15 +94,15 @@ public class ClientController {
     @DeleteMapping("/client/{clientId}")
     public ResponseEntity<Void> deleteClient(@PathVariable("clientId")int clientId)
     {
-       try{
-        this.clientTableService.deleteClient(clientId);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-       }
-       catch(Exception e){
+        try{
+            this.clientTableService.deleteClient(clientId);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        catch(Exception e){
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 
-       }
+        }
     }
 
 
@@ -106,5 +120,5 @@ public class ClientController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-    
+
 }

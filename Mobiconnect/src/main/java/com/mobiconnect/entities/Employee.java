@@ -14,7 +14,7 @@ public class Employee
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+    @Column(name = "id")
     private int id;
     private String name;
     private String email;
@@ -37,9 +37,13 @@ public class Employee
     @JoinColumn(name = "employee_id",referencedColumnName = "id")
     private List<Leave> leave;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "employee_id",referencedColumnName = "id")
+    private List<TimeSheet> timeSheets;
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "employee")
     private Set<Project> projects;
-   
+
     public int getId() {
         return id;
     }
@@ -126,7 +130,7 @@ public class Employee
     }
     public Employee(int id, String name, String email, String contact, String gender, Date dob,
                     String designation, String address, String work_location, Date date_of_joining, Date date_of_exit,
-                    String manager, String total_leaves, String leave_balance, List<Leave> leaveTable, Set<Project> projects) {
+                    String manager, String total_leaves, String leave_balance, List<Leave> leaveTable, List<TimeSheet> timeSheets, Set<Project> projects) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -141,7 +145,7 @@ public class Employee
         this.manager = manager;
         this.total_leaves = total_leaves;
         this.leave_balance = leave_balance;
-        this.projects = projects;
+        this.timeSheets = timeSheets;
         this.leave = leave;
     }
 
@@ -157,4 +161,14 @@ public class Employee
     public void setLeaveTable(List<Leave> leaveTable) {
         this.leave = leave;
     }
+
+    public List<TimeSheet> getTimeSheets() {
+        return timeSheets;
+    }
+
+    public void setTimeSheets(List<TimeSheet> timeSheets) {
+        this.timeSheets = timeSheets;
+    }
+
+
 }

@@ -1,6 +1,9 @@
 package com.mobiconnect.entities;
 
+
 import jakarta.persistence.*;
+
+import java.util.List;
 
 
 @Entity
@@ -14,6 +17,10 @@ public class TimeSheetDay {
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "project_id", nullable = false)
 //    private Project project;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ts_id",referencedColumnName = "id")
+    private List<TimeSheet> timeSheet;
 
     private String day1;
 
@@ -31,8 +38,9 @@ public class TimeSheetDay {
 
     private int week;
 
-    public TimeSheetDay(int id, Project project, String day1, String day2, String day3, String day4, String day5, String day6, String day7, int week) {
+    public TimeSheetDay(int id, Project project, List<TimeSheet> timeSheet, String day1, String day2, String day3, String day4, String day5, String day6, String day7, int week) {
         this.id = id;
+        this.timeSheet = timeSheet;
 //        this.project = project;
         this.day1 = day1;
         this.day2 = day2;
@@ -118,6 +126,14 @@ public class TimeSheetDay {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public List<TimeSheet> getTimeSheet() {
+        return timeSheet;
+    }
+
+    public void setTimeSheet(List<TimeSheet> timeSheet) {
+        this.timeSheet = timeSheet;
     }
 
 //    public Project getProject() {

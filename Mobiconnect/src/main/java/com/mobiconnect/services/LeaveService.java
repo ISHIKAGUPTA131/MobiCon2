@@ -1,10 +1,8 @@
 package com.mobiconnect.services;
 
-import com.mobiconnect.entities.Client;
+
 import com.mobiconnect.entities.Leave;
-import com.mobiconnect.entities.Project;
 import com.mobiconnect.repositories.LeaveRepository;
-import com.mobiconnect.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
