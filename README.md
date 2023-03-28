@@ -203,6 +203,10 @@ Clients:
 
 localhost:8080/client/search?name=Push
 
+TimeSheets:
+
+localhost:8080/timesheets/search?status=Pen
+
 
 ## Dependencies
 
